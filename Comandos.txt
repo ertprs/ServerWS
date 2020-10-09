@@ -1,0 +1,64 @@
+Funções do WS do WhatsApp
+
+Nome do Contexto
+
+../serverwhats/
+
+Eventos.
+
+/Start  => Inicializa o serviço do WhatsApp caso esteja desconectado
+
+/Restart => Reinicia o Serviço do WhatsApp
+
+/Stop => Finaliza o Serviço do WhatsApp
+
+/NumeroConectado => Retorna o numero do telefone Conectado
+
+/Status => Retorna o Status do Serviço do WhatsApp
+
+/SendMessage => Parametros
+		   CelularDestino = Número do celular no qual a mensagem sera enviada 11999999999
+		   Mensagem = Mensagem a ser enviada		
+		   Anexo = O caminho acompanhado do arquivo a ser enviado C:\Pasta\Arquivo.bmp
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Formato do retorno (JSON)
+
+{"Retorno":"Valor"}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+Códigos das Mensagens
+
+10 - Sucesso na operação solicitada
+12 - O Serviço já se encontra encerrado
+13 - Encerrando processo
+14 - A Serviço esta sendo iniciado...
+15 - Reiniciando o serviço
+16 - WhatsApp não conectado!
+17 - Celular inválido!
+18 - Caminho do anexo não encontrado!
+19 - Mensagem Enviada com sucesso
+20 - Status da bateria (Beta) - Pode não funcionar
+
+
+55 - (Retorna o Status Atual do Serviço)
+99 - Erro - (O retorno será a mensagem do Exception)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

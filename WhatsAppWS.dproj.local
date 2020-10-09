@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/08/29 16:26:44.000.455,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2019/08/29 16:26:45.000.925,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2019/08/29 16:26:57.000.913,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:45:31.000.094,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/02 19:45:33.000.441,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:45:35.000.754,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:46:15.000.880,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:46:16.000.291,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerConst1.pas</Transaction>
+    <Transaction>2019/09/02 19:46:16.000.161,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:49:26.000.928,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/02 19:49:27.000.303,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:49:27.000.485,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:50:31.000.370,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:50:31.000.680,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:50:31.000.822,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerConst1.pas</Transaction>
+    <Transaction>2019/09/02 19:52:46.000.272,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/02 19:52:46.000.840,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:52:46.000.663,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:55:27.000.385,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:55:28.000.411,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2019/09/02 19:55:28.000.203,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2020/02/09 17:21:44.000.629,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/03/09 20:26:22.000.735,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2020/03/09 20:26:26.000.235,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerConst1.pas</Transaction>
+    <Transaction>2020/03/09 20:27:08.000.733,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/03/09 20:27:10.000.921,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2020/03/09 20:27:12.000.968,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2020/03/26 11:48:56.000.933,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/05/22 09:48:08.000.657,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2020/05/22 09:48:11.000.235,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2020/05/22 09:48:11.000.344,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerConst1.pas</Transaction>
+    <Transaction>2020/05/22 09:48:46.000.956,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/05/22 09:48:49.000.363,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2020/05/22 09:48:52.000.113,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2020/05/22 09:50:08.000.853,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2020/05/22 09:50:08.000.634,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2020/05/22 09:50:09.000.103,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\ServerConst1.pas</Transaction>
+    <Transaction>2020/07/11 16:50:28.000.155,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/08/12 22:29:46.000.059,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/08/29 10:41:23.000.758,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/06 18:31:10.000.558,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 13:28:18.000.542,=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 13:28:42.000.110,=E:\Projetos\ServerZap - VCL\uDM.pas</Transaction>
+    <Transaction>2020/09/26 13:28:54.000.846,E:\Projetos\ServerZap - VCL\uPrincipal.dfm=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020/09/26 13:28:54.000.846,E:\Projetos\ServerZap - VCL\uPrincipal.pas=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 13:29:01.000.996,E:\Projetos\ServerZap - VCL\WhatsAppWS.dproj=C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2020/09/26 13:42:27.000.223,=E:\Projetos\ServerZap - VCL\Unit2.pas</Transaction>
+    <Transaction>2020/09/26 13:44:37.000.763,E:\Projetos\ServerZap - VCL\uConexao.pas=E:\Projetos\ServerZap - VCL\Unit2.pas</Transaction>
+    <Transaction>2020/09/26 13:44:37.000.763,E:\Projetos\ServerZap - VCL\uConexao.dfm=E:\Projetos\ServerZap - VCL\Unit2.dfm</Transaction>
+    <Transaction>2020/09/26 18:04:07.000.008,=E:\Projetos\ServerZap - VCL\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 18:04:22.000.872,E:\Projetos\ServerZap - VCL\Unit1.pas=E:\Projetos\ServerZap - VCL\WS.Utils.pas</Transaction>
+    <Transaction>2020/09/26 18:07:22.000.499,E:\Projetos\ServerZap - VCL\WS.Utils.pas=E:\Projetos\ServerZap - VCL\WS.Leds.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5" Android64="0048627021" Android="0048627021"/>
+	</ActiveMobileDevice>
+</BorlandProject>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/08/07 08:15:15.000.210,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/08/10 09:32:40.000.742,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/10 18:00:01.000.812,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/18 14:06:59.000.017,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/23 08:38:19.000.745,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/23 08:44:14.000.969,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/23 08:46:17.184,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/23 08:47:57.118,C:\KDT\ServerZap\VCL\uDM.pas=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/23 08:47:57.118,C:\KDT\ServerZap\VCL\uDM.dfm=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020/09/23 08:48:37.183,C:\KDT\ServerZap\VCL\WSWhatsapp.dproj=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2020/09/23 08:49:20.379,=C:\KDT\ServerZap\VCL\Unit1.pas</Transaction>
+    <Transaction>2020/09/23 08:49:32.561,C:\KDT\ServerZap\VCL\uPrincipal.pas=C:\KDT\ServerZap\VCL\Unit1.pas</Transaction>
+    <Transaction>2020/09/23 08:49:32.561,C:\KDT\ServerZap\VCL\uPrincipal.dfm=C:\KDT\ServerZap\VCL\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
