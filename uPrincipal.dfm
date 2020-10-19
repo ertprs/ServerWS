@@ -4,7 +4,7 @@ object frmPrincipal: TfrmPrincipal
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'WhatsAppWS'
-  ClientHeight = 274
+  ClientHeight = 269
   ClientWidth = 540
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,14 +16,39 @@ object frmPrincipal: TfrmPrincipal
   Position = poDesktopCenter
   OnClose = FormClose
   OnCreate = FormCreate
+  DesignSize = (
+    540
+    269)
   PixelsPerInch = 96
   TextHeight = 13
   object lblVersao: TLabel
-    Left = 8
-    Top = 253
+    Left = 12
+    Top = 249
     Width = 43
     Height = 13
+    Anchors = [akLeft, akBottom]
     Caption = 'lblVersao'
+    ExplicitTop = 259
+  end
+  object btnConfig: TButton
+    Left = 272
+    Top = 220
+    Width = 128
+    Height = 42
+    Anchors = [akLeft, akBottom]
+    Caption = 'Configurar'
+    TabOrder = 0
+    OnClick = btnConfigClick
+  end
+  object btnFechar: TButton
+    Left = 406
+    Top = 220
+    Width = 128
+    Height = 42
+    Anchors = [akLeft, akBottom]
+    Caption = 'Fechar'
+    TabOrder = 1
+    OnClick = btnFecharClick
   end
   object Panel2: TPanel
     Left = 0
@@ -33,7 +58,7 @@ object frmPrincipal: TfrmPrincipal
     Align = alTop
     Color = clWhite
     ParentBackground = False
-    TabOrder = 0
+    TabOrder = 2
     object Label1: TLabel
       Left = 120
       Top = 12
@@ -732,7 +757,7 @@ object frmPrincipal: TfrmPrincipal
     Align = alTop
     Color = clWhite
     ParentBackground = False
-    TabOrder = 1
+    TabOrder = 3
     object Label5: TLabel
       Left = 120
       Top = 12
@@ -1424,24 +1449,6 @@ object frmPrincipal: TfrmPrincipal
       OnClick = btnIniciarZapClick
     end
   end
-  object btnConfig: TButton
-    Left = 268
-    Top = 220
-    Width = 128
-    Height = 42
-    Caption = 'Configurar'
-    TabOrder = 2
-    OnClick = btnConfigClick
-  end
-  object btnFechar: TButton
-    Left = 402
-    Top = 220
-    Width = 128
-    Height = 42
-    Caption = 'Fechar'
-    TabOrder = 3
-    OnClick = btnFecharClick
-  end
   object RESTServicePooler: TRESTServicePooler
     Active = False
     CORS = False
@@ -1482,6 +1489,7 @@ object frmPrincipal: TfrmPrincipal
     AjustNumber.DDIDefault = 55
     FormQrCodeType = Ft_Http
     OnGetQrCode = InjectZapGetQrCode
+    OnGetUnReadMessages = InjectZapGetUnReadMessages
     OnGetStatus = InjectZapGetStatus
     OnGetBatteryLevel = InjectZapGetBatteryLevel
     OnGetMyNumber = InjectZapGetMyNumber

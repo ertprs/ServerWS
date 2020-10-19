@@ -7,37 +7,37 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   uTInject.ConfigCEF, uTInject, uTInject.Constant, uTInject.JS, uInjectDecryptFile,
   uTInject.Console, uTInject.Diversos, uTInject.AdjustNumber, uTInject.Config, uTInject.Classes,
-  uDWAbout, uRESTDWBase, Vcl.Imaging.jpeg, uDM, Vcl.AppEvnts, Vcl.Menus;
+  uDWAbout, uRESTDWBase, Vcl.Imaging.jpeg, uDM, Vcl.AppEvnts, Vcl.Menus, uBotConversa, uBotGestor;
 
 type
   TfrmPrincipal = class(TForm)
+    btnConfig: TButton;
+    btnFechar: TButton;
+    RESTServicePooler: TRESTServicePooler;
+    InjectZap: TInject;
+    lblVersao: TLabel;
+    TrayIcon: TTrayIcon;
+    ApplicationEvents: TApplicationEvents;
     Panel2: TPanel;
     Label1: TLabel;
     Label2: TLabel;
-    btnIniciarWS: TButton;
     Label3: TLabel;
     lblStatusWS: TLabel;
     lblMensagem: TLabel;
+    Image1: TImage;
+    led1WS: TShape;
+    led2WS: TShape;
+    btnIniciarWS: TButton;
     Panel1: TPanel;
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     lblStatus: TLabel;
     lblMsgZap: TLabel;
-    btnIniciarZap: TButton;
-    btnConfig: TButton;
-    btnFechar: TButton;
-    RESTServicePooler: TRESTServicePooler;
-    InjectZap: TInject;
-    Image1: TImage;
     Image2: TImage;
-    led1WS: TShape;
-    led2WS: TShape;
     led2Zap: TShape;
     led1Zap: TShape;
-    lblVersao: TLabel;
-    TrayIcon: TTrayIcon;
-    ApplicationEvents: TApplicationEvents;
+    btnIniciarZap: TButton;
     procedure InjectZapConnected(Sender: TObject);
     procedure InjectZapDisconnectedBrute(Sender: TObject);
     procedure InjectZapGetMyNumber(Sender: TObject);
@@ -53,10 +53,21 @@ type
     procedure InjectZapGetBatteryLevel(Sender: TObject);
     procedure ApplicationEventsMinimize(Sender: TObject);
     procedure TrayIconDblClick(Sender: TObject);
+    procedure InjectZapGetUnReadMessages(const Chats: TChatList);
   private
+    Gestor        : TBotManager;
+    ConversaAtual : TBotConversa;
+    FCabecario: String;
+    procedure SetCabecario(const Value: String);
+
     { Private declarations }
   public
-    { Public declarations }
+    procedure GestorInteracao(Conversa: TBotConversa);
+    procedure EnviarMensagem(AEtapa: Integer; ATexto : String; AAnexo : String = '');
+    procedure EnviarAvisoRespostaInvalida;
+    procedure EnviarRespostaConfirmacaoPedido(AResposta : String; AContato : String);
+    procedure EnviarMenuConfirmacaoPedido;
+    property Cabecario : String read FCabecario write SetCabecario;
   end;
 
 var
@@ -66,7 +77,122 @@ implementation
 
 {$R *.dfm}
 
-uses uConexao, System.IniFiles, uCEFApplicationCore;
+uses uConexao, System.IniFiles, uCEFApplicationCore, Winapi.ShellAPI, ubotDAO;
+
+procedure TfrmPrincipal.EnviarRespostaConfirmacaoPedido(AResposta, AContato: String);
+var
+ATexto : String;
+begin
+
+     try
+        if UpperCase(AResposta) = '1' then ATexto := botDAO.registrarPedidoConfirmado;
+        if Pos(UpperCase(AResposta), '0') > 0 then ATexto :=  botDAO.registrarPedidoNegado;
+     finally
+         EnviarMensagem(1, ATexto, FCabecario);
+     end;
+
+end;
+
+procedure TfrmPrincipal.EnviarAvisoRespostaInvalida;
+var
+AText : String;
+begin
+
+     AText := AText + InjectZap.Emoticons.LoiraMaoNoRosto + ' *Resposta inválida! Tente novamente* \n\n';
+     EnviarMensagem(ConversaAtual.Etapa, AText, FCabecario);
+
+end;
+
+procedure TfrmPrincipal.EnviarMensagem(AEtapa: Integer; ATexto, AAnexo: String);
+begin
+     ConversaAtual.Etapa    := AEtapa;
+     ConversaAtual.Pergunta := ATexto;
+     ConversaAtual.Resposta := '';
+
+     if AAnexo <> '' then
+        InjectZap.SendFile(ConversaAtual.ID, AAnexo, ConversaAtual.Pergunta)
+     else
+        InjectZap.Send(ConversaAtual.ID, ConversaAtual.Pergunta);
+
+end;
+
+procedure TfrmPrincipal.EnviarMenuConfirmacaoPedido;
+var
+ATexto : String;
+begin
+
+     ConversaAtual.Situacao := saEmAtendimento;
+     case botDAO.validaPedido(ConversaAtual.ID) of
+          False : begin
+                       ATexto := InjectZap.Emoticons.LoiraFazerOq + ' *Desculpe, mas você não possui nenhum pedido para confirmar!*';
+                       EnviarMensagem(ConversaAtual.Etapa, ATexto, FCabecario);
+                  end;
+           True : begin
+                       ATexto := 'Deseja confirmar o recebimento do pedido *' + botDAO.NumeroPedido + '\n\n'+
+                                 '*, digite a opção correspondente abaixo. \n';
+                       ATexto := ATexto + InjectZap.Emoticons.Check + ' - SIM \n\n';
+                       ATexto := ATexto + InjectZap.Emoticons.NegativeSquaredCrossMark + ' - NÃO \n\n' +
+                                          InjectZap.Emoticons.WarningSign + '(*A não confirmação o pedido ficara sejeito ao cancelamento*)';
+
+                       EnviarMensagem(1, ATexto, FCabecario);
+                  end;
+     End;
+end;
+
+procedure TfrmPrincipal.GestorInteracao(Conversa: TBotConversa);
+var
+AResposta : String;
+begin
+     ConversaAtual := Conversa;
+     ConversaAtual.Situacao := saEmAtendimento;
+     Conversa.Etapa         := 1;
+     case Conversa.Situacao of
+          saEmAtendimento : begin
+                                 case Conversa.Etapa of
+                                     1 : begin
+                                             //Tratar a resposta menu origem
+                                             if botDAO.validaPedido(ConversaAtual.ID) = True then
+                                                 begin
+                                                     if (Pos(UpperCase(Conversa.Resposta), '1') > 0) or
+                                                        (Pos(UpperCase(Conversa.Resposta), '0') > 0) then
+                                                            EnviarRespostaConfirmacaoPedido(Conversa.Resposta, ConversaAtual.ID)
+                                                     else
+                                                            EnviarAvisoRespostaInvalida;
+                                                 end;
+
+                                         end;
+                                 end;
+
+                            end;
+     end;
+
+end;
+
+Procedure DeleteDiretorio(hHandle: THandle; Const sPath : String; Confirm: boolean);
+var
+OpStruc: TSHFileOpStruct;
+FromBuffer, ToBuffer: Array[0..128] of Char;
+begin
+    fillChar( OpStruc, Sizeof(OpStruc), 0 );
+    FillChar( FromBuffer, Sizeof(FromBuffer), 0 );
+    FillChar( ToBuffer, Sizeof(ToBuffer), 0 );
+    StrPCopy( FromBuffer, sPath);
+    With OpStruc Do
+        begin
+            Wnd:= hHandle;
+            wFunc:=FO_DELETE;
+            pFrom:= @FromBuffer;
+            pTo:= @ToBuffer;
+            if not confirm then
+                begin
+                    fFlags:= FOF_NOCONFIRMATION;
+                end;
+            fAnyOperationsAborted:=False;
+            hNameMappings:=nil;
+        //lpszProgressTitle:=nil;
+        End;
+    ShFileOperation(OpStruc);
+end;
 
 function GetVersaoArq: string;
 var
@@ -229,6 +355,11 @@ begin
             if not InjectZap.FormQrCodeShowing then
                  InjectZap.FormQrCodeShowing := True;
 
+            Gestor := TBotManager.Create(Self);
+            Gestor.Simultaneos := 30;
+            Gestor.TempoInatividade := (90 * 1000);
+            Gestor.OnInteracao := GestorInteracao;
+
         end
     else
         begin
@@ -249,6 +380,7 @@ var
 FArqIni : TIniFile;
 begin
 
+     FCabecario := ExtractFilePath(Application.ExeName) + 'Imagens\Logo.jpg';
      lblVersao.Caption := GetVersaoArq;
 
      AtivaLed(led1WS, led2WS, False);
@@ -268,10 +400,23 @@ begin
                 FArqIni.WriteInteger('WHATSAPP','PORTA',8082);
             end;
 
-            gPathQrWhats    := FArqIni.ReadString('WHATSAPP','SERVER','') + '\' +
-                               FArqIni.ReadString('WHATSAPP','PATHQRCODE','');
-            gPathAnexoWhats := FArqIni.ReadString('WHATSAPP','SERVER','') + '\' +
-                               FArqIni.ReadString('WHATSAPP','PATHANEXO','');
+            botDAO.conexaoBDG.Params.Values['Database'] := FArqIni.ReadString('CONEX FIREDAC','BDBDG','');
+            botDAO.conexaoBDG.Params.Values['Server']   := FArqIni.ReadString('CONEX FIREDAC','SERVER_BDG','');
+            botDAO.conexaoBDG.Open;
+
+            if FArqIni.ReadString('WHATSAPP','SERVER','') <> '' then
+                begin
+                    gPathQrWhats    := FArqIni.ReadString('WHATSAPP','SERVER','') + '\' +
+                                       FArqIni.ReadString('WHATSAPP','PATHQRCODE','');
+                    gPathAnexoWhats := FArqIni.ReadString('WHATSAPP','SERVER','') + '\' +
+                                       FArqIni.ReadString('WHATSAPP','PATHANEXO','');
+                end
+            else
+                begin
+                    gPathQrWhats    := FArqIni.ReadString('WHATSAPP','PATHQRCODE','');
+                    gPathAnexoWhats := FArqIni.ReadString('WHATSAPP','PATHANEXO','');
+                end;
+
 
             gPorta          := FArqIni.ReadInteger('WHATSAPP','PORTA',0);
             RESTServicePooler.ServicePort := gPorta;
@@ -296,6 +441,11 @@ end;
 
 procedure TfrmPrincipal.InjectZapDisconnected(Sender: TObject);
 begin
+    DeleteDiretorio(Self.Handle, ExtractFileDir(GetCurrentDir) + '\cache', False);
+    DeleteDiretorio(Self.Handle, ExtractFileDir(GetCurrentDir) + '\LogTinject', False);
+    DeleteDiretorio(Self.Handle, ExtractFileDir(GetCurrentDir) + '\TInjectAnexos', False);
+    DeleteDiretorio(Self.Handle, ExtractFileDir(GetCurrentDir) + '\User Data', False);
+
     AtivaLed(led1Zap, led2Zap, False);
 end;
 
@@ -355,6 +505,16 @@ begin
         Inject_Destroy             : lblMsgZap.Caption := 'Serviço finalizado';
 
     end;
+end;
+
+procedure TfrmPrincipal.InjectZapGetUnReadMessages(const Chats: TChatList);
+begin
+     Gestor.AdministrarChatList(InjectZap, Chats);
+end;
+
+procedure TfrmPrincipal.SetCabecario(const Value: String);
+begin
+  FCabecario := Value;
 end;
 
 procedure TfrmPrincipal.TrayIconDblClick(Sender: TObject);

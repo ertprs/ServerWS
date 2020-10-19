@@ -1,11 +1,11 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{74051A23-6D12-40B9-83A1-A91F02F735C7}</ProjectGuid>
+        <ProjectGuid>{68F0BC91-67F3-4604-8A76-9B6F617D21C9}</ProjectGuid>
         <ProjectVersion>18.8</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <MainSource>WhatsAppWS.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -60,7 +60,7 @@
         <SanitizedProjectName>WhatsAppWS</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;ZComponent;RestDatawareCORE;vclactnband;ZCore;vclFireDAC;ACBr_NF3e;ACBr_TEFD;emsclientfiredac;ACBr_SATWS;DataSnapFireDAC;svnui;tethering;FireDACADSDriver;ACBr_BPeDabpeESCPOS;ACBr_BPe;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;ERSFMX;vcltouch;ACBr_EDI;ACBr_NFe;vcldb;bindcompfmx;svn;ACBr_ONE;DBXOracleDriver;ACBr_NFeDanfeFR;inetdb;compCielo;CEF4Delphi;ACBr_Diversos;ACBr_NFeDanfeESCPOS;ACBr_GNREGuiaFR;FmxTeeUI;emsedge;ACBr_LCDPR;FireDACIBDriver;fmx;fmxdae;vclib;frxTee26;ACBr_CTeDacteFR;ACBr_Ponto;fs26;FireDACDBXDriver;dbexpress;IndyCore;MobilePermissions;ACBr_NFSeDanfseFR;RESTDWDriverFD;vclx;frxIntIO26;ZParseSql;dsnap;DataSnapCommon;emsclient;FireDACCommon;RESTBackendComponents;DataSnapConnectors;ACBR_DeSTDA;VCLRESTComponents;ACBr_Reinf;soapserver;ACBr_SAT;fsTee26;ERS;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;fsIBX26;ACBr_PAF;frx26;ACBr_Sintegra;FireDACCommonODBC;FireDACCommonDriver;TInjectCollection;DataSnapClient;ACBr_GNRE;frxIntIOIndy26;inet;ACBr_SATECFVirtual;bindcompdbx;IndyIPCommon;ACBr_TCP;vcl;DBXSybaseASEDriver;IndyIPServer;ACBr_CTe;frxDB26;IndySystem;frxDBX26;FireDACDb2Driver;fsADO26;ACBr_SATExtratoESCPOS;TSVNWizardProjD26;CompZenvia;dsnapcon;ACBr_Integrador;ACBre_Social;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;fsDB26;TeeDB;FireDAC;ZDbc;ACBr_SPED;ACBr_SPEDImportar;emshosting;ACBr_Comum;frxe26;ACBr_MDFe;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;ACBr_LFD;DBXOdbcDriver;FireDACTDataDriver;FMXTee;frxIBX26;soaprtl;DbxCommonDriver;ACBr_CIOT;ibxpress;Tee;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;ibxbindings;rtl;emsserverresource;DbxClientDriver;FireDACDSDriver;DBXSybaseASADriver;frxADO26;CustomIPTransport;vcldsnap;ACBr_OpenSSL;ACBr_Convenio115;bindcomp;appanalytics;ZPlain;DBXInformixDriver;ACBr_Serial;IndyIPClient;bindcompvcl;acntDX10Rio_R;TeeUI;ACBr_BlocoX;RtmRxCtl260;dbxcds;VclSmp;TMSFMXPackPkgDXE12;adortl;FireDACODBCDriver;RtmRxDB260;ACBr_NFCeECFVirtual;ACBr_BoletoFR;DataSnapIndy10ServerTransport;ACBr_Boleto;ACBr_ANe;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;ACBr_SEF2;ACBr_MDFeDamdfeFR;ACBr_NFSe;ACBr_NF3eDANF3eESCPOS;ACBr_MTER;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;ZComponent;RestDatawareCORE;vclactnband;ZCore;vclFireDAC;ACBr_NF3e;ACBr_TEFD;emsclientfiredac;ACBr_SATWS;DataSnapFireDAC;svnui;tethering;FireDACADSDriver;ACBr_BPeDabpeESCPOS;ACBr_BPe;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;ERSFMX;vcltouch;ACBr_EDI;ACBr_NFe;vcldb;bindcompfmx;svn;ACBr_ONE;DBXOracleDriver;ACBr_NFeDanfeFR;inetdb;compCielo;CEF4Delphi;ACBr_Diversos;ACBr_NFeDanfeESCPOS;ACBr_GNREGuiaFR;FmxTeeUI;emsedge;ACBr_LCDPR;FireDACIBDriver;fmx;fmxdae;vclib;frxTee26;ACBr_CTeDacteFR;ACBr_Ponto;fs26;FireDACDBXDriver;dbexpress;IndyCore;MobilePermissions;ACBr_NFSeDanfseFR;RESTDWDriverFD;vclx;frxIntIO26;ZParseSql;dsnap;DataSnapCommon;emsclient;FireDACCommon;RESTBackendComponents;DataSnapConnectors;ACBR_DeSTDA;VCLRESTComponents;ACBr_Reinf;soapserver;ACBr_SAT;fsTee26;ERS;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;fsIBX26;ACBr_PAF;frx26;ACBr_Sintegra;FireDACCommonODBC;FireDACCommonDriver;TInjectCollection;DataSnapClient;ACBr_GNRE;frxIntIOIndy26;inet;ACBr_SATECFVirtual;bindcompdbx;IndyIPCommon;ACBr_TCP;vcl;DBXSybaseASEDriver;IndyIPServer;ACBr_CTe;frxDB26;IndySystem;frxDBX26;FireDACDb2Driver;fsADO26;ACBr_SATExtratoESCPOS;TSVNWizardProjD26;CompZenvia;dsnapcon;ACBr_Integrador;ACBre_Social;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;fsDB26;TeeDB;FireDAC;ZDbc;ACBr_SPED;ACBr_SPEDImportar;emshosting;ACBr_Comum;frxe26;ACBr_MDFe;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;ACBr_LFD;DBXOdbcDriver;FireDACTDataDriver;FMXTee;frxIBX26;soaprtl;DbxCommonDriver;ACBr_CIOT;ibxpress;Tee;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;ibxbindings;rtl;emsserverresource;DbxClientDriver;FireDACDSDriver;DBXSybaseASADriver;frxADO26;CustomIPTransport;vcldsnap;ACBr_OpenSSL;ACBr_Convenio115;bindcomp;appanalytics;ZPlain;DBXInformixDriver;ACBr_Serial;IndyIPClient;bindcompvcl;TeeUI;ACBr_BlocoX;RtmRxCtl260;dbxcds;VclSmp;TMSFMXPackPkgDXE12;adortl;FireDACODBCDriver;RtmRxDB260;ACBr_NFCeECFVirtual;ACBr_BoletoFR;DataSnapIndy10ServerTransport;ACBr_Boleto;ACBr_ANe;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;ACBr_SEF2;ACBr_MDFeDamdfeFR;ACBr_NFSe;ACBr_NF3eDANF3eESCPOS;ACBr_MTER;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -83,11 +83,10 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <DCC_ExeOutput>.\bin</DCC_ExeOutput>
+        <DCC_DcuOutput>.\$(Platform)\$(Config)./dcu</DCC_DcuOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>WhatsAppWS_Icon1.ico</Icon_MainIcon>
-        <UWP_DelphiLogo44>Imagens\Logo_44x44.png</UWP_DelphiLogo44>
-        <UWP_DelphiLogo150>Imagens\Logo_150x150.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -98,24 +97,20 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_MinorVer>9</VerInfo_MinorVer>
-        <VerInfo_Release>1</VerInfo_Release>
-        <VerInfo_Build>2</VerInfo_Build>
-        <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=KDT Informática;FileDescription=WhatsAppWS;FileVersion=20.9.1.2;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.whatsappws;ProductName=whatsappws;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <Icon_MainIcon>WhatsAppWS_Icon2.ico</Icon_MainIcon>
-        <UWP_DelphiLogo44>Imagens\Logo_44x44.png</UWP_DelphiLogo44>
-        <UWP_DelphiLogo150>Imagens\Logo_150x150.png</UWP_DelphiLogo150>
-        <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_MajorVer>20</VerInfo_MajorVer>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="uPrincipal.pas">
-            <Form>frmPrincipal</Form>
+        <DCCReference Include="uBotConversa.pas"/>
+        <DCCReference Include="ubotDAO.pas">
+            <Form>botDAO</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="uBotGestor.pas"/>
+        <DCCReference Include="uConexao.pas">
+            <Form>frmConfiguracao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uDM.pas">
@@ -123,10 +118,11 @@
             <FormType>dfm</FormType>
             <DesignClass>TServerMethodDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="uConexao.pas">
-            <Form>frmConfiguracao</Form>
+        <DCCReference Include="uPrincipal.pas">
+            <Form>frmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uWhatsApp.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -157,34 +153,6 @@
                 <DeployFile LocalName="Win32\Debug\WhatsAppWS.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>WhatsAppWS.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Imagens\Logo_44x44.png" Configuration="Release" Class="UWP_DelphiLogo44">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets\</RemoteDir>
-                        <RemoteName>Logo44x44.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Imagens\Logo_44x44.png" Configuration="Debug" Class="UWP_DelphiLogo44">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets\</RemoteDir>
-                        <RemoteName>Logo44x44.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Imagens\Logo_150x150.png" Configuration="Release" Class="UWP_DelphiLogo150">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets\</RemoteDir>
-                        <RemoteName>Logo150x150.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Imagens\Logo_150x150.png" Configuration="Debug" Class="UWP_DelphiLogo150">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets\</RemoteDir>
-                        <RemoteName>Logo150x150.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

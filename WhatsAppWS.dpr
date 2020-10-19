@@ -3,21 +3,24 @@ program WhatsAppWS;
 uses
   Vcl.Forms,
   uTInject.ConfigCEF,
-  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
+  uBotConversa in 'uBotConversa.pas',
+  ubotDAO in 'ubotDAO.pas' {botDAO: TDataModule},
+  uBotGestor in 'uBotGestor.pas',
+  uConexao in 'uConexao.pas' {frmConfiguracao},
   uDM in 'uDM.pas' {dm: TServerMethodDataModule},
-  uConexao in 'uConexao.pas' {frmConfiguracao};
+  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
+  uWhatsApp in 'uWhatsApp.pas';
 
 {$R *.res}
 
 begin
-
-  If not GlobalCEFApp.StartMainProcess then
+  if not GlobalCEFApp.StartMainProcess then
      Exit;
-
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TbotDAO, botDAO);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmConfiguracao, frmConfiguracao);
+  Application.CreateForm(Tdm, dm);
   Application.Run;
 end.

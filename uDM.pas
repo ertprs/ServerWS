@@ -4,7 +4,7 @@ interface
 
 uses
   System.Classes, uDWDataModule, uDWAbout, uRESTDWServerEvents, uDWJSONObject,
-  uRESTDWServerContext, uTInject;
+  uRESTDWServerContext, uTInject, ubotDAO;
 
 type
   Tdm = class(TServerMethodDataModule)
@@ -21,6 +21,8 @@ type
     procedure DWServerEventsEventsInicializaServicoReplyEvent(
       var Params: TDWParams; var Result: string);
     procedure DWServerEventsEventsRestartReplyEvent(var Params: TDWParams; var Result: string);
+    procedure DWServerEventsEventsSendPedidoReplyEvent(var Params: TDWParams;
+      var Result: string);
 
   private
     function MensagemRetornoJson(ACodigo : Integer; AMensagem : String) : String;
@@ -118,7 +120,7 @@ procedure Tdm.DWServerEventsEventsInicializaServicoReplyEvent(
 begin
 
      try
-        ClickStartZap;
+        frmPrincipal.btnIniciarZapClick(Self);
         Result := MensagemRetornoJson(14,'A Serviço esta sendo iniciado...');
     Except
     on E:Exception do
@@ -217,6 +219,65 @@ begin
             end;
 
      end;
+
+end;
+
+procedure Tdm.DWServerEventsEventsSendPedidoReplyEvent(var Params: TDWParams;
+  var Result: string);
+var
+ACelular,
+AAnexo,
+APedido,
+AMensagem,
+ACabecario : String;
+begin
+
+     try
+         ACelular := Params.ItemsString['Celular'].AsString;
+         AAnexo   := Params.ItemsString['Anexo'].AsString;
+         APedido  := Params.ItemsString['Pedido'].AsString;
+         botDAO.NumeroPedido := APedido;
+         AMensagem := AMensagem + 'Olá, mensagem automática \n\n'+
+                                  'Pedido *' + APedido + '* para você... \n' +
+                                  'Confirme o recebimento para mim! \n\n' +
+                                  frmPrincipal.InjectZap.Emoticons.Um + ' para SIM \n\n' +
+                                  frmPrincipal.InjectZap.Emoticons.Zero + ' para NÃO \n\n' +
+                                  '*Obrigado!*';
+
+         if frmPrincipal.InjectZap.Status = TStatusType.Server_Disconnected then
+            begin
+                 Result := MensagemRetornoJson(16,'WhatsApp não conectado!');
+                 Exit;
+            end;
+
+         if Length(ACelular) < 11 then
+            begin
+                 Result := MensagemRetornoJson(17,'Celular inválido!');
+                 Exit;
+            end;
+
+         if (AAnexo <> '') and (not FileExists(AAnexo)) then
+            begin
+                 Result := MensagemRetornoJson(18,'Caminho do anexo não encontrado!');
+                 Exit;
+            end;
+
+         if not frmPrincipal.InjectZap.Auth then
+            Exit;
+
+         frmPrincipal.InjectZap.SendFile(ACelular + '@c.us', AAnexo);
+         Sleep(1000);
+         frmPrincipal.InjectZap.SendFile(ACelular + '@c.us', frmPrincipal.Cabecario, AMensagem);
+
+         Result := MensagemRetornoJson(19,'Mensagem Enviada com sucesso');
+     except
+        On E:Exception do
+            begin
+                Result := MensagemRetornoJson(99, E.Message);
+            end;
+
+     end;
+
 
 end;
 

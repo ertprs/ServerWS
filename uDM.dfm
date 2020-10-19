@@ -103,9 +103,40 @@ object dm: Tdm
         EventName = 'Restart'
         OnlyPreDefinedParams = False
         OnReplyEvent = DWServerEventsEventsRestartReplyEvent
+      end
+      item
+        Routes = [crAll]
+        NeedAuthorization = True
+        DWParams = <
+          item
+            TypeObject = toParam
+            ObjectDirection = odIN
+            ObjectValue = ovString
+            ParamName = 'Celular'
+            Encoded = True
+          end
+          item
+            TypeObject = toParam
+            ObjectDirection = odIN
+            ObjectValue = ovString
+            ParamName = 'Anexo'
+            Encoded = True
+          end
+          item
+            TypeObject = toParam
+            ObjectDirection = odIN
+            ObjectValue = ovString
+            ParamName = 'Pedido'
+            Encoded = True
+          end>
+        JsonMode = jmPureJSON
+        Name = 'SendPedido'
+        EventName = 'SendPedido'
+        OnlyPreDefinedParams = False
+        OnReplyEvent = DWServerEventsEventsSendPedidoReplyEvent
       end>
     ContextName = 'ServerWhats'
-    Left = 132
-    Top = 112
+    Left = 164
+    Top = 136
   end
 end
