@@ -17,8 +17,10 @@ type
   private
     FNumeroPedido: String;
     FIdPedido: String;
+    FEmpresa: String;
     procedure SetNumeroPedido(const Value: String);
     procedure SetIdPedido(const Value: String);
+    procedure SetEmpresa(const Value: String);
     { Private declarations }
   public
     { Public declarations }
@@ -29,7 +31,8 @@ type
 
 
     property NumeroPedido : String read FNumeroPedido write SetNumeroPedido;
-    property IdPedido     : String read FIdPedido write SetIdPedido;
+    property IdPedido     : String read FIdPedido     write SetIdPedido;
+    property Empresa      : String read FEmpresa      write SetEmpresa;
   end;
 
 var
@@ -101,13 +104,13 @@ begin
 
                  Result := TInjectEmoticons.AtendenteM +
                           'O pedido *' + NumeroPedido + '* foi confirmado com sucesso! \n\n' +
-                          '*Até logo!*';
+                          TInjectEmoticons.LoiraAteLogo + ' *Até logo!*';
               end;
      Except
            on E:Exception do
               begin
                   Result := TInjectEmoticons.LoiraMaoNoRosto +
-                           'Não foi possivel confirmar o pedido, informa a Pet Bontrato e informe a mensagem abaixo. \n\n' +
+                           'Não foi possivel confirmar o pedido, comunique a ' + Empresa + ' e informe a mensagem abaixo. \n\n' +
                            E.Message;
               end;
      End;
@@ -133,12 +136,17 @@ begin
            on E:Exception do
               begin
                   Result := TInjectEmoticons.LoiraMaoNoRosto +
-                           'Não foi possivel cancelar o pedido, informe a Pet Bontrato e informe a mensagem abaixo. \n\n' +
+                           'Não foi possivel cancelar o pedido, comunique a ' + Empresa + ' e informe a mensagem abaixo. \n\n' +
                            E.Message;
               end;
      End;
 end;
 
+
+procedure TbotDAO.SetEmpresa(const Value: String);
+begin
+  FEmpresa := Value;
+end;
 
 procedure TbotDAO.SetIdPedido(const Value: String);
 begin

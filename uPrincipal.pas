@@ -99,7 +99,7 @@ AText : String;
 begin
 
      AText := AText + InjectZap.Emoticons.LoiraMaoNoRosto + ' *Resposta inválida! Tente novamente* \n\n';
-     EnviarMensagem(ConversaAtual.Etapa, AText, FCabecario);
+     EnviarMensagem(ConversaAtual.Etapa, AText);
 
 end;
 

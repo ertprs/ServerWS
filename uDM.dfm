@@ -128,6 +128,13 @@ object dm: Tdm
             ObjectValue = ovString
             ParamName = 'Pedido'
             Encoded = True
+          end
+          item
+            TypeObject = toParam
+            ObjectDirection = odIN
+            ObjectValue = ovString
+            ParamName = 'Empresa'
+            Encoded = True
           end>
         JsonMode = jmPureJSON
         Name = 'SendPedido'

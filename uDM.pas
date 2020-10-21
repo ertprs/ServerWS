@@ -29,7 +29,6 @@ type
     { Private declarations }
   public
 
-    { Public declarations }
   end;
 
 var
@@ -184,6 +183,7 @@ begin
          ACelular  := Params.ItemsString['CelularDestino'].AsString;
          AAnexo    := Params.ItemsString['Anexo'].AsString;
          AMensagem := Params.ItemsString['Mensagem'].AsString;
+         botDAO.Empresa := Params.ItemsString['Empresa'].AsString;
 
          if frmPrincipal.InjectZap.Status = TStatusType.Server_Disconnected then
             begin
@@ -237,7 +237,7 @@ begin
          AAnexo   := Params.ItemsString['Anexo'].AsString;
          APedido  := Params.ItemsString['Pedido'].AsString;
          botDAO.NumeroPedido := APedido;
-         AMensagem := AMensagem + 'Olá, mensagem automática \n\n'+
+         AMensagem := AMensagem + frmPrincipal.InjectZap.Emoticons.LoiraNotebook + ' Olá, mensagem automática \n\n'+
                                   'Pedido *' + APedido + '* para você... \n' +
                                   'Confirme o recebimento para mim! \n\n' +
                                   frmPrincipal.InjectZap.Emoticons.Um + ' para SIM \n\n' +
@@ -277,7 +277,6 @@ begin
             end;
 
      end;
-
 
 end;
 
