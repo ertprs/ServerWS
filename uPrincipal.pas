@@ -375,8 +375,6 @@ end;
 
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-
-
     if (lblStatusWS.Caption <> 'Off-Line') or (lblStatus.Caption <> 'Off-Line') then
         begin
             Action := TCloseAction.caNone;

@@ -259,7 +259,7 @@ begin
 
          if (AAnexo <> '') and (not FileExists(AAnexo)) then
             begin
-                 ShowMessage(AAnexo + '  Caminho do anexo não encontrado!');
+                 Result := MensagemRetornoJson(18,'Caminho do anexo não encontrado!');
                  Exit;
             end;
 
@@ -270,7 +270,6 @@ begin
          Sleep(1000);
          frmPrincipal.InjectZap.SendFile(ACelular + '@c.us', frmPrincipal.Cabecario, AMensagem);
 
-         ShowMessage('Mensagem Enviada com sucesso');
      except
         On E:Exception do
             begin
