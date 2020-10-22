@@ -14,6 +14,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  WindowState = wsMinimized
   OnClose = FormClose
   OnCreate = FormCreate
   DesignSize = (

@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   uTInject.ConfigCEF, uTInject, uTInject.Constant, uTInject.JS, uInjectDecryptFile,
   uTInject.Console, uTInject.Diversos, uTInject.AdjustNumber, uTInject.Config, uTInject.Classes,
-  uDWAbout, uRESTDWBase, Vcl.Imaging.jpeg, uDM, Vcl.AppEvnts, Vcl.Menus, uBotConversa, uBotGestor;
+  uDWAbout, uRESTDWBase, Vcl.Imaging.jpeg, uDM, Vcl.AppEvnts, Vcl.Menus, uBotConversa, uBotGestor,
+  uLog;
 
 type
   TfrmPrincipal = class(TForm)
@@ -54,6 +55,7 @@ type
     procedure ApplicationEventsMinimize(Sender: TObject);
     procedure TrayIconDblClick(Sender: TObject);
     procedure InjectZapGetUnReadMessages(const Chats: TChatList);
+    procedure Vizualizar1Click(Sender: TObject);
   private
     Gestor        : TBotManager;
     ConversaAtual : TBotConversa;
@@ -89,6 +91,7 @@ begin
         if Pos(UpperCase(AResposta), '0') > 0 then ATexto :=  botDAO.registrarPedidoNegado;
      finally
          EnviarMensagem(1, ATexto, FCabecario);
+
      end;
 
 end;
@@ -114,6 +117,8 @@ begin
      else
         InjectZap.Send(ConversaAtual.ID, ConversaAtual.Pergunta);
 
+     GravaLog('Mensagem enviada: ' + ConversaAtual.Pergunta);
+
 end;
 
 procedure TfrmPrincipal.EnviarMenuConfirmacaoPedido;
@@ -136,7 +141,7 @@ begin
 
                        EnviarMensagem(1, ATexto, FCabecario);
                   end;
-     End;
+     end;
 end;
 
 procedure TfrmPrincipal.GestorInteracao(Conversa: TBotConversa);
@@ -255,6 +260,7 @@ begin
         end
     else
         begin
+            GravaLog('Servidor finalizado');
             Close;
         end;
 
@@ -296,7 +302,7 @@ begin
                                      E.Message;
 
                     lblStatusWS.Caption := 'Off-line';
-
+                    GravaLog(E.Message);
                 end;
 
             end;
@@ -369,16 +375,42 @@ end;
 
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+
     if (lblStatusWS.Caption <> 'Off-Line') or (lblStatus.Caption <> 'Off-Line') then
-        Action := TCloseAction.caNone
+        begin
+            Action := TCloseAction.caNone;
+        end
     else
-        Action := caFree;
+        begin
+            CloseFile(AArqLog);
+            Action := caFree;
+        end;
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 var
 FArqIni : TIniFile;
 begin
+
+     AssignFile(AArqLog,ExtractFilePath(Application.ExeName) + 'wslog.log');
+     {$I-}
+     Reset(AArqLog);
+     {$I+}
+     if (IOResult <> 0) then
+        begin
+            Rewrite(AArqLog);
+        end
+     else
+        begin
+            CloseFile(AArqLog);
+            Append(AArqLog);
+        end;
+
+     if FileExists(ExtractFilePath(Application.ExeName) + 'wslog.log') then
+        begin
+
+        end;
 
      FCabecario := ExtractFilePath(Application.ExeName) + 'Imagens\Logo.jpg';
      lblVersao.Caption := GetVersaoArq;
@@ -475,6 +507,7 @@ begin
 
      if FileExists(gPathQrWhats + '\qrcode.png') then
          lblMsgZap.Caption := 'Aguardando a autenticação.';
+
 end;
 
 procedure TfrmPrincipal.InjectZapGetStatus(Sender: TObject);
@@ -505,6 +538,10 @@ begin
         Inject_Destroy             : lblMsgZap.Caption := 'Serviço finalizado';
 
     end;
+    GravaLog(lblMsgZap.Caption);
+    GravaLog(lblStatus.Caption);
+    GravaLog(lblStatusWS.Caption);
+
 end;
 
 procedure TfrmPrincipal.InjectZapGetUnReadMessages(const Chats: TChatList);
@@ -518,6 +555,14 @@ begin
 end;
 
 procedure TfrmPrincipal.TrayIconDblClick(Sender: TObject);
+begin
+  TrayIcon.Visible := False;
+  Show();
+  WindowState := wsNormal;
+  Application.BringToFront();
+end;
+
+procedure TfrmPrincipal.Vizualizar1Click(Sender: TObject);
 begin
   TrayIcon.Visible := False;
   Show();

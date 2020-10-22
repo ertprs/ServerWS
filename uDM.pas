@@ -4,7 +4,7 @@ interface
 
 uses
   System.Classes, uDWDataModule, uDWAbout, uRESTDWServerEvents, uDWJSONObject,
-  uRESTDWServerContext, uTInject, ubotDAO;
+  uRESTDWServerContext, uTInject, ubotDAO, uLog;
 
 type
   Tdm = class(TServerMethodDataModule)
@@ -44,11 +44,12 @@ implementation
 
 uses
   System.SysUtils, uPrincipal, uTInject.Constant, Winapi.Windows, Vcl.Controls,
-  Winapi.Messages, Vcl.Forms;
+  Winapi.Messages, Vcl.Forms, Vcl.Dialogs;
 
 {%CLASSGROUP 'FMX.Controls.TControl'}
 
 {$R *.dfm}
+
 
 function Tdm.MensagemRetornoJson(ACodigo : Integer; AMensagem : String) : String;
 var
@@ -57,7 +58,7 @@ begin
 
      ABaseErro := '{"Codigo":"%d","Retorno":"%s"}';
      Result := Format(ABaseErro,[ACodigo,AMensagem]);
-
+     gravaLog(AMensagem);
 end;
 
 procedure Tdm.DWServerEventsEventsdwevent2ReplyEvent(var Params: TDWParams;
@@ -258,7 +259,7 @@ begin
 
          if (AAnexo <> '') and (not FileExists(AAnexo)) then
             begin
-                 Result := MensagemRetornoJson(18,'Caminho do anexo não encontrado!');
+                 ShowMessage(AAnexo + '  Caminho do anexo não encontrado!');
                  Exit;
             end;
 
@@ -269,11 +270,11 @@ begin
          Sleep(1000);
          frmPrincipal.InjectZap.SendFile(ACelular + '@c.us', frmPrincipal.Cabecario, AMensagem);
 
-         Result := MensagemRetornoJson(19,'Mensagem Enviada com sucesso');
+         ShowMessage('Mensagem Enviada com sucesso');
      except
         On E:Exception do
             begin
-                Result := MensagemRetornoJson(99, E.Message);
+                ShowMessage(E.Message);
             end;
 
      end;

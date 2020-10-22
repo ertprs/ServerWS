@@ -9,7 +9,8 @@ uses
   uConexao in 'uConexao.pas' {frmConfiguracao},
   uDM in 'uDM.pas' {dm: TServerMethodDataModule},
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
-  uWhatsApp in 'uWhatsApp.pas';
+  uWhatsApp in 'uWhatsApp.pas',
+  uLog in 'uLog.pas';
 
 {$R *.res}
 
