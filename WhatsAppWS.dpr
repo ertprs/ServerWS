@@ -8,20 +8,22 @@ uses
   uBotGestor in 'uBotGestor.pas',
   uConexao in 'uConexao.pas' {frmConfiguracao},
   uDM in 'uDM.pas' {dm: TServerMethodDataModule},
+  uLog in 'uLog.pas',
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
-  uWhatsApp in 'uWhatsApp.pas',
-  uLog in 'uLog.pas';
+  uWhatsApp in 'uWhatsApp.pas';
 
 {$R *.res}
 
 begin
-  if not GlobalCEFApp.StartMainProcess then
+
+  If not GlobalCEFApp.StartMainProcess then
      Exit;
+
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TbotDAO, botDAO);
+  Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmConfiguracao, frmConfiguracao);
-  Application.CreateForm(Tdm, dm);
   Application.Run;
 end.

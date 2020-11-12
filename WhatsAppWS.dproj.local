@@ -1,6 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2020/10/18 13:18:10.000.750,C:\Users\Souza\Documents\Embarcadero\Studio\Projects\Project2.dproj=D:\Dropbox\Server_WS\trunk\WhatsAppWS.dproj</Transaction>
+    <Transaction>2020/08/07 08:15:15.000.210,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/08/10 09:32:40.000.742,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/10 18:00:01.000.812,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/18 14:06:59.000.017,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/23 08:38:19.000.745,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/23 08:44:14.000.969,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/09 10:31:56.000.100,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/12 17:17:47.605,=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/12 17:18:46.494,=C:\Users\Marcio\Dropbox\Server_WS\trunk\uBotConversa.pas</Transaction>
+    <Transaction>2020/11/12 17:18:46.666,=C:\Users\Marcio\Dropbox\Server_WS\trunk\ubotDAO.pas</Transaction>
+    <Transaction>2020/11/12 17:18:46.729,=C:\Users\Marcio\Dropbox\Server_WS\trunk\uBotGestor.pas</Transaction>
+    <Transaction>2020/11/12 17:18:46.869,=C:\Users\Marcio\Dropbox\Server_WS\trunk\uConexao.pas</Transaction>
+    <Transaction>2020/11/12 17:18:47.025,=C:\Users\Marcio\Dropbox\Server_WS\trunk\uDM.pas</Transaction>
+    <Transaction>2020/11/12 17:18:47.103,=C:\Users\Marcio\Dropbox\Server_WS\trunk\uLog.pas</Transaction>
+    <Transaction>2020/11/12 17:18:47.322,=C:\Users\Marcio\Dropbox\Server_WS\trunk\uPrincipal.pas</Transaction>
+    <Transaction>2020/11/12 17:18:47.385,=C:\Users\Marcio\Dropbox\Server_WS\trunk\uWhatsApp.pas</Transaction>
+    <Transaction>2020/11/12 17:19:02.531,C:\Users\Marcio\Dropbox\Server_WS\trunk\WhatsAppWS.dproj=C:\Users\Marcio\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
   </Transactions>
 </BorlandProject>

@@ -58,7 +58,6 @@ begin
 
      ABaseErro := '{"Codigo":"%d","Retorno":"%s"}';
      Result := Format(ABaseErro,[ACodigo,AMensagem]);
-     gravaLog(AMensagem);
 end;
 
 procedure Tdm.DWServerEventsEventsdwevent2ReplyEvent(var Params: TDWParams;
@@ -234,9 +233,9 @@ ACabecario : String;
 begin
 
      try
-         ACelular := Params.ItemsString['Celular'].AsString;
-         AAnexo   := Params.ItemsString['Anexo'].AsString;
-         APedido  := Params.ItemsString['Pedido'].AsString;
+         ACelular  := Params.ItemsString['Celular'].AsString;
+         AAnexo    := Params.ItemsString['Anexo'].AsString;
+         APedido   := Params.ItemsString['Pedido'].AsString;
          botDAO.NumeroPedido := APedido;
          AMensagem := AMensagem + frmPrincipal.InjectZap.Emoticons.LoiraNotebook + ' Olá, mensagem automática \n\n'+
                                   'Pedido *' + APedido + '* para você... \n' +

@@ -117,8 +117,6 @@ begin
      else
         InjectZap.Send(ConversaAtual.ID, ConversaAtual.Pergunta);
 
-     GravaLog('Mensagem enviada: ' + ConversaAtual.Pergunta);
-
 end;
 
 procedure TfrmPrincipal.EnviarMenuConfirmacaoPedido;
@@ -260,7 +258,6 @@ begin
         end
     else
         begin
-            GravaLog('Servidor finalizado');
             Close;
         end;
 
@@ -302,7 +299,6 @@ begin
                                      E.Message;
 
                     lblStatusWS.Caption := 'Off-line';
-                    GravaLog(E.Message);
                 end;
 
             end;
@@ -376,39 +372,15 @@ end;
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
     if (lblStatusWS.Caption <> 'Off-Line') or (lblStatus.Caption <> 'Off-Line') then
-        begin
-            Action := TCloseAction.caNone;
-        end
+        Action := TCloseAction.caNone
     else
-        begin
-            CloseFile(AArqLog);
-            Action := caFree;
-        end;
+        Action := caFree;
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 var
 FArqIni : TIniFile;
 begin
-
-     AssignFile(AArqLog,ExtractFilePath(Application.ExeName) + 'wslog.log');
-     {$I-}
-     Reset(AArqLog);
-     {$I+}
-     if (IOResult <> 0) then
-        begin
-            Rewrite(AArqLog);
-        end
-     else
-        begin
-            CloseFile(AArqLog);
-            Append(AArqLog);
-        end;
-
-     if FileExists(ExtractFilePath(Application.ExeName) + 'wslog.log') then
-        begin
-
-        end;
 
      FCabecario := ExtractFilePath(Application.ExeName) + 'Imagens\Logo.jpg';
      lblVersao.Caption := GetVersaoArq;
@@ -471,11 +443,6 @@ end;
 
 procedure TfrmPrincipal.InjectZapDisconnected(Sender: TObject);
 begin
-    DeleteDiretorio(Self.Handle, ExtractFileDir(GetCurrentDir) + '\cache', False);
-    DeleteDiretorio(Self.Handle, ExtractFileDir(GetCurrentDir) + '\LogTinject', False);
-    DeleteDiretorio(Self.Handle, ExtractFileDir(GetCurrentDir) + '\TInjectAnexos', False);
-    DeleteDiretorio(Self.Handle, ExtractFileDir(GetCurrentDir) + '\User Data', False);
-
     AtivaLed(led1Zap, led2Zap, False);
 end;
 
@@ -536,9 +503,6 @@ begin
         Inject_Destroy             : lblMsgZap.Caption := 'Serviço finalizado';
 
     end;
-    GravaLog(lblMsgZap.Caption);
-    GravaLog(lblStatus.Caption);
-    GravaLog(lblStatusWS.Caption);
 
 end;
 
